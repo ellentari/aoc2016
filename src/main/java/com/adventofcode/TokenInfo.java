@@ -10,7 +10,7 @@ public class TokenInfo<TOKEN> {
     private final Function<Matcher, TOKEN> mapping;
 
     public TokenInfo(String regexp, Function<Matcher, TOKEN> mapping) {
-        this.pattern = Pattern.compile("^(" + regexp + ")");
+        this.pattern = Pattern.compile("^" + regexp);
         this.mapping = mapping;
     }
 
