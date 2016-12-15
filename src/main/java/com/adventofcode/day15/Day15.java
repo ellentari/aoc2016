@@ -72,8 +72,6 @@ public class Day15 {
 
         System.out.println(solvePart1(input));
         System.out.println(solvePart2(input));
-
-
     }
 
     static int solvePart1(String input) {

@@ -91,13 +91,11 @@ public class Day14 {
     }
 
     static int solvePart1(String input) {
-
         List<Key> possibleKeys = new LinkedList<>();
         List<Key> keys = new ArrayList<>();
 
         for (int i = 0; keys.size() < N; i++) {
-            String s = input + i;
-            String hash = hash(s, 0);
+            String hash = hash(input + i, 0);
 
             Optional<Triplet> triplet = findFirstTriplet(hash);
 
@@ -112,13 +110,11 @@ public class Day14 {
     }
 
     static int solvePart2(String input) {
-
         List<Key> possibleKeys = new LinkedList<>();
         List<Key> keys = new ArrayList<>();
 
         for (int i = 0; keys.size() < N; i++) {
-            String s = input + i;
-            String hash = hash(s, STRETCH_TIMES);
+            String hash = hash(input + i, STRETCH_TIMES);
 
             Optional<Triplet> triplet = findFirstTriplet(hash);
 
