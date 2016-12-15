@@ -23,7 +23,7 @@ public class Tokenizer<TOKEN> {
                 if (matcher.find()) {
                     matchFound = true;
                     tokens.add(tokenInfo.map(matcher));
-                    input = matcher.replaceFirst("");
+                    input = matcher.replaceFirst("").trim();
                 }
             }
 
