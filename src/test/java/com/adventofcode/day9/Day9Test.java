@@ -1,6 +1,6 @@
 package com.adventofcode.day9;
 
-import com.adventofcode.ResourceUtils;
+import com.adventofcode.common.ResourceUtils;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

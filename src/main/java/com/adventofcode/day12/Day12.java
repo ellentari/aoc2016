@@ -1,8 +1,8 @@
 package com.adventofcode.day12;
 
-import com.adventofcode.ResourceUtils;
-import com.adventofcode.TokenInfo;
-import com.adventofcode.Tokenizer;
+import com.adventofcode.common.ResourceUtils;
+import com.adventofcode.common.TokenInfo;
+import com.adventofcode.common.Tokenizer;
 import com.adventofcode.day12.instruction.CopyInstruction;
 import com.adventofcode.day12.instruction.DecInstruction;
 import com.adventofcode.day12.instruction.IncInstruction;

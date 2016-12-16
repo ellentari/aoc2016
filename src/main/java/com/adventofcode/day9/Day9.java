@@ -1,8 +1,8 @@
 package com.adventofcode.day9;
 
-import com.adventofcode.ResourceUtils;
-import com.adventofcode.TokenInfo;
-import com.adventofcode.Tokenizer;
+import com.adventofcode.common.ResourceUtils;
+import com.adventofcode.common.TokenInfo;
+import com.adventofcode.common.Tokenizer;
 
 import java.util.List;
 import java.util.regex.Matcher;

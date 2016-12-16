@@ -1,6 +1,6 @@
 package com.adventofcode.day10;
 
-import com.adventofcode.ResourceUtils;
+import com.adventofcode.common.ResourceUtils;
 
 /**
  * --- Day 10: Balance Bots ---

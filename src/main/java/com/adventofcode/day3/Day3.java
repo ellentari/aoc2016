@@ -1,10 +1,9 @@
 package com.adventofcode.day3;
 
-import com.adventofcode.ResourceUtils;
+import com.adventofcode.common.ResourceUtils;
 
 import java.util.List;
 
-import static java.util.Arrays.asList;
 import static java.util.Arrays.stream;
 
 /**

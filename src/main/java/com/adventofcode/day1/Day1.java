@@ -1,6 +1,6 @@
 package com.adventofcode.day1;
 
-import com.adventofcode.ResourceUtils;
+import com.adventofcode.common.ResourceUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;

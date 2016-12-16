@@ -1,10 +1,9 @@
-package com.adventofcode;
+package com.adventofcode.common;
 
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 

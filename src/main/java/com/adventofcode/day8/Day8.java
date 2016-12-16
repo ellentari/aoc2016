@@ -1,6 +1,6 @@
 package com.adventofcode.day8;
 
-import com.adventofcode.ResourceUtils;
+import com.adventofcode.common.ResourceUtils;
 
 import java.util.List;
 import java.util.stream.Stream;

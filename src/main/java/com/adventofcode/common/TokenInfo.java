@@ -1,4 +1,4 @@
-package com.adventofcode;
+package com.adventofcode.common;
 
 import java.util.function.Function;
 import java.util.regex.Matcher;

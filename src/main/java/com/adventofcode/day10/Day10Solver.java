@@ -1,7 +1,7 @@
 package com.adventofcode.day10;
 
-import com.adventofcode.TokenInfo;
-import com.adventofcode.Tokenizer;
+import com.adventofcode.common.TokenInfo;
+import com.adventofcode.common.Tokenizer;
 
 import java.util.ArrayList;
 import java.util.Collections;

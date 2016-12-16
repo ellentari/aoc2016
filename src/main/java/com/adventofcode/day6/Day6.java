@@ -1,6 +1,6 @@
 package com.adventofcode.day6;
 
-import com.adventofcode.ResourceUtils;
+import com.adventofcode.common.ResourceUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
