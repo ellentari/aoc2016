@@ -57,14 +57,7 @@ public class Day5 {
     private static final int PASSWORD_LENGTH = 8;
     private static final String HEX_PREFIX  = "00000";
 
-    public static void main(String[] args) throws NoSuchAlgorithmException {
-        String doorId = "ojvtpuvg";
-
-        System.out.println(solvePart1(doorId));
-        System.out.println(solvePart2(doorId));
-    }
-
-    static String solvePart1(String doorId) throws NoSuchAlgorithmException {
+    public static String solvePart1(String doorId) throws NoSuchAlgorithmException {
         String password = "";
 
         for (int i = 0; password.length() < PASSWORD_LENGTH; i++) {
@@ -77,7 +70,7 @@ public class Day5 {
         return password;
     }
 
-    static String solvePart2(String doorId) throws NoSuchAlgorithmException {
+    public static String solvePart2(String doorId) throws NoSuchAlgorithmException {
         char[] password = new char[PASSWORD_LENGTH];
         int found = 0;
 

@@ -1,8 +1,8 @@
 package com.adventofcode.day1;
 
-import com.adventofcode.common.ResourceUtils;
-
-import java.util.*;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,14 +42,7 @@ import static java.util.Arrays.stream;
  */
 public class Day1 {
 
-    public static void main(String[] args) {
-        String input = ResourceUtils.read("day1.txt");
-
-        System.out.println(solvePart1(input));
-        System.out.println(solvePart2(input));
-    }
-
-    static int solvePart1(String input) {
+    public static int solvePart1(String input) {
         Coordinates initPos = new Coordinates(0, 0);
         Coordinates finalPos = makeMoves(initPos, parseMoves(input));
 
@@ -64,7 +57,7 @@ public class Day1 {
         return person.position;
     }
 
-    static int solvePart2(String input) {
+    public static int solvePart2(String input) {
         Coordinates initialPos = new Coordinates(0, 0);
         Optional<Coordinates> finalPos = findFirstVisitedTwice(initialPos, parseMoves(input));
 

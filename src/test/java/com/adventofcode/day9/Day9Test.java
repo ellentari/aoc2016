@@ -3,7 +3,7 @@ package com.adventofcode.day9;
 import com.adventofcode.common.ResourceUtils;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class Day9Test {
 
@@ -26,12 +26,12 @@ public class Day9Test {
     }
 
     @Test
-    public void testSolvePart1_realData() {
+    public void solvePart1() {
         assertEquals(115118, Day9.solvePart1(ResourceUtils.read("day9.txt")));
     }
 
     @Test
-    public void testSolvePart2_realData() {
+    public void solvePart2() {
         assertEquals(11107527530L, Day9.solvePart2(ResourceUtils.read("day9.txt")));
     }
 

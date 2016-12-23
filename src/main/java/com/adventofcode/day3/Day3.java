@@ -49,14 +49,14 @@ public class Day3 {
         System.out.println(solvePart2(input));
     }
 
-    static int solvePart1(List<String> input) {
+    public static int solvePart1(List<String> input) {
         return (int) input.stream()
                 .map(Day3::parseRow)
                 .filter(Day3::isValidTriangle)
                 .count();
     }
 
-    static int solvePart2(List<String> input) {
+    public static int solvePart2(List<String> input) {
         int count = 0;
 
         for (int i = 0; i < input.size() - 2; i += 3) {

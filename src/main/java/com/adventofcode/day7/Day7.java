@@ -1,7 +1,5 @@
 package com.adventofcode.day7;
 
-import com.adventofcode.common.ResourceUtils;
-
 import java.util.stream.Stream;
 
 import static java.util.Arrays.stream;
@@ -49,20 +47,13 @@ import static java.util.Arrays.stream;
  */
 public class Day7 {
 
-    public static void main(String[] args) {
-        String input = ResourceUtils.read("day7.txt");
-
-        System.out.println(solvePart1(input));
-        System.out.println(solvePart2(input));
-    }
-
-    static int solvePart1(String input) {
+    public static int solvePart1(String input) {
         return (int) parseIPs(input)
                 .filter(IP::supportsTLS)
                 .count();
     }
 
-    static int solvePart2(String input) {
+    public static int solvePart2(String input) {
         return (int) parseIPs(input)
                 .filter(IP::supportsSSL)
                 .count();

@@ -1,7 +1,5 @@
 package com.adventofcode.day10;
 
-import com.adventofcode.common.ResourceUtils;
-
 /**
  * --- Day 10: Balance Bots ---
  * <p>
@@ -46,15 +44,17 @@ public class Day10 {
 
     private static final int TARGET_LOWER = 17;
     private static final int TARGET_HIGHER = 61;
+    private static final int[] OUTPUTS = {0, 1, 2};
 
-    public static void main(String[] args) {
-        String input = ResourceUtils.read("day10.txt");
+    public static int solvePart1(String input) {
+        Day10Solver day10Solver = new Day10Solver(input, TARGET_LOWER, TARGET_HIGHER, OUTPUTS);
+        day10Solver.solve();
+        return day10Solver.getPart1Answer();
+    }
 
-        Day10Solver solver = new Day10Solver(input, TARGET_LOWER, TARGET_HIGHER, 0, 1, 2);
-
-        solver.solve();
-
-        System.out.println("Part 1 answer: " + solver.getPart1Answer());
-        System.out.println("Part 2 answer: " + solver.getPart2Answer());
+    public static int solvePart2(String input) {
+        Day10Solver day10Solver = new Day10Solver(input, TARGET_LOWER, TARGET_HIGHER, OUTPUTS);
+        day10Solver.solve();
+        return day10Solver.getPart2Answer();
     }
 }

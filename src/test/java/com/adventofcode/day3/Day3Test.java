@@ -1,5 +1,6 @@
 package com.adventofcode.day3;
 
+import com.adventofcode.common.ResourceUtils;
 import org.junit.Test;
 
 import static java.util.Arrays.asList;
@@ -24,5 +25,15 @@ public class Day3Test {
                 "203 403 603";
 
         assertEquals(6, Day3.solvePart2(asList(input.split("\n"))));
+    }
+
+    @Test
+    public void solvePart1() {
+        assertEquals(917, Day3.solvePart1(ResourceUtils.readLines("day3.txt")));
+    }
+
+    @Test
+    public void solvePart2() {
+        assertEquals(1649, Day3.solvePart2(ResourceUtils.readLines("day3.txt")));
     }
 }

@@ -1,7 +1,5 @@
 package com.adventofcode.day2;
 
-import com.adventofcode.common.ResourceUtils;
-
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -67,14 +65,7 @@ import static java.util.stream.Collectors.toList;
  */
 public class Day2 {
 
-    public static void main(String[] args) {
-        List<String> input = ResourceUtils.readLines("day2.txt");
-
-        System.out.println(solvePart1(input));
-        System.out.println(solvePart2(input));
-    }
-
-    static String solvePart1(List<String> input) {
+    public static String solvePart1(List<String> input) {
         Character[][] keypad = {
                 {'1', '2', '3'},
                 {'4', '5', '6'},
@@ -84,7 +75,7 @@ public class Day2 {
         return solve(new Keypad(keypad), new Keypad.Position(1, 1), input);
     }
 
-    static String solvePart2(List<String> input) {
+    public static String solvePart2(List<String> input) {
         Character[][] keypad = {
                 { null, null, '1', null, null },
                 { null,  '2', '3',  '4', null },

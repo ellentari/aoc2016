@@ -1,7 +1,5 @@
 package com.adventofcode.day6;
 
-import com.adventofcode.common.ResourceUtils;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -60,18 +58,11 @@ import static java.util.Comparator.comparingInt;
  */
 public class Day6 {
 
-    public static void main(String[] args) {
-        List<String> input = ResourceUtils.readLines("day6.txt");
-
-        System.out.println(solvePart1(input));
-        System.out.println(solvePart2(input));
-    }
-
-    static String solvePart1(List<String> input) {
+    public static String solvePart1(List<String> input) {
         return errorCorrected(input, LetterFrequency::getMostFrequent);
     }
 
-    static String solvePart2(List<String> input) {
+    public static String solvePart2(List<String> input) {
         return errorCorrected(input, LetterFrequency::getLeastFrequent);
     }
     

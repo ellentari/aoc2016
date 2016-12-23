@@ -1,7 +1,5 @@
 package com.adventofcode.day8;
 
-import com.adventofcode.common.ResourceUtils;
-
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -65,17 +63,7 @@ import java.util.stream.Stream;
  */
 public class Day8 {
 
-    private static final int SCREEN_WIDTH = 50;
-    private static final int SCREEN_HEIGHT = 6;
-
-    public static void main(String[] args) {
-        List<String> input = ResourceUtils.readLines("day8.txt");
-
-        System.out.println(solvePart1(input, SCREEN_WIDTH, SCREEN_HEIGHT));
-        System.out.println(solvePart2(input, SCREEN_WIDTH, SCREEN_HEIGHT));
-    }
-
-    static int solvePart1(List<String> input, int screenWidth, int screenHeight) {
+    public static int solvePart1(List<String> input, int screenWidth, int screenHeight) {
         Screen screen = new Screen(screenWidth, screenHeight);
 
         parseScreenCommands(input).forEach(screenCommand -> screenCommand.execute(screen));
@@ -84,7 +72,7 @@ public class Day8 {
 
     }
 
-    static String solvePart2(List<String> input, int screenWidth, int screenHeight) {
+    public static String solvePart2(List<String> input, int screenWidth, int screenHeight) {
         Screen screen = new Screen(screenWidth, screenHeight);
 
         parseScreenCommands(input).forEach(screenCommand -> screenCommand.execute(screen));

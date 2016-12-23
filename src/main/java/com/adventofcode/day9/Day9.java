@@ -1,6 +1,5 @@
 package com.adventofcode.day9;
 
-import com.adventofcode.common.ResourceUtils;
 import com.adventofcode.common.TokenInfo;
 import com.adventofcode.common.Tokenizer;
 
@@ -17,14 +16,7 @@ public class Day9 {
     private static final TokenInfo<Token> MARKER_TOKEN_INFO
             = new TokenInfo<>("\\((?<first>\\d+)x(?<second>\\d+)\\)", Day9::parseMarker);
 
-    public static void main(String[] args) {
-        String input = ResourceUtils.read("day9.txt");
-
-        System.out.println(solvePart1(input));
-        System.out.println(solvePart2(input));
-    }
-
-    static long solvePart1(String input) {
+    public static long solvePart1(String input) {
         List<Token> tokens = new Tokenizer<>(asList(SEQ_TOKEN_INFO, MARKER_TOKEN_INFO)).parse(input);
 
         long decompressedLength = 0;
@@ -58,7 +50,7 @@ public class Day9 {
         return decompressedLength;
     }
 
-    static long solvePart2(String input) {
+    public static long solvePart2(String input) {
         List<Token> tokens = new Tokenizer<>(asList(SEQ_TOKEN_INFO, MARKER_TOKEN_INFO)).parse(input);
 
         long decompressedLength = 0;

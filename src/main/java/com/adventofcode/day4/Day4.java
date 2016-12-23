@@ -1,7 +1,5 @@
 package com.adventofcode.day4;
 
-import com.adventofcode.common.ResourceUtils;
-
 import java.util.stream.Stream;
 
 import static java.util.Arrays.stream;
@@ -45,21 +43,14 @@ import static java.util.Arrays.stream;
  */
 public class Day4 {
 
-    public static void main(String[] args) {
-        String input = ResourceUtils.read("day4.txt");
-
-        System.out.println(solvePart1(input));
-        System.out.println(solvePart2(input));
-    }
-
-    static int solvePart1(String input) {
+    public static int solvePart1(String input) {
         return parseRooms(input)
                 .filter(Room::isReal)
                 .mapToInt(Room::getSectorId)
                 .sum();
     }
 
-    private static int solvePart2(String input) {
+    public static int solvePart2(String input) {
         return parseRooms(input)
                 .filter(Room::isReal)
                 .filter(room -> room.decryptName().contains("northpole object"))
