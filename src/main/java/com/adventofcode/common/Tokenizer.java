@@ -1,6 +1,7 @@
 package com.adventofcode.common;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.regex.Matcher;
 
@@ -31,5 +32,22 @@ public class Tokenizer<TOKEN> {
         }
 
         return tokens;
+    }
+
+    public void parse(String input, Collection<TOKEN> to) {
+        while (!"".equals(input)) {
+            boolean matchFound = false;
+
+            for (TokenInfo<TOKEN> tokenInfo : tokenInfos) {
+                Matcher matcher = tokenInfo.getPattern().matcher(input);
+                if (matcher.find()) {
+                    matchFound = true;
+                    to.add(tokenInfo.map(matcher));
+                    input = matcher.replaceFirst("").trim();
+                }
+            }
+
+            if (!matchFound) throw new IllegalArgumentException("Unexpected token: " + input);
+        }
     }
 }

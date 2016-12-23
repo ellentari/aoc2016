@@ -35,4 +35,8 @@ public class TokenInfo<TOKEN> {
             return mapping2.apply(matcher, tokens);
         }
     }
+
+    public TOKEN map(Matcher matcher) {
+        return mapping.apply(matcher);
+    }
 }
