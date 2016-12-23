@@ -1,32 +1,39 @@
 package com.adventofcode.day12.instruction;
 
-import com.adventofcode.day12.Register;
+import com.adventofcode.day12.argument.Argument;
 
-import java.util.function.IntSupplier;
+public class JnzInstruction extends AbstractInstruction implements TwoArgInstruction  {
 
-public class JnzInstruction extends AbstractInstruction {
+    private Argument value;
+    private Argument n;
 
-    private IntSupplier value;
-    private int n;
-
-    public JnzInstruction(Register register, IntSupplier value, int n) {
-        super(register);
+    public JnzInstruction(Argument value, Argument n) {
         this.value = value;
         this.n = n;
     }
 
     @Override
-    protected void doExecute() {
+    public Argument getArg1() {
+        return value;
+    }
+
+    @Override
+    public Argument getArg2() {
+        return n;
+    }
+
+    @Override
+    protected void doExecute(int startAddress) {
         // no op
     }
 
     @Override
     protected int returnAddress(int startAddress) {
-        return startAddress + (value.getAsInt() != 0 ? n : 1);
+        return startAddress + (value.getValue() != 0 ? n.getValue() : 1);
     }
 
     @Override
     public String toString() {
-        return "jnz " + value.getAsInt() + " " + n;
+        return "jnz " + value + " " + n;
     }
 }

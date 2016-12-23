@@ -1,23 +1,27 @@
 package com.adventofcode.day12.instruction;
 
-import com.adventofcode.day12.Register;
+import com.adventofcode.day12.argument.Argument;
 
-public class IncInstruction extends AbstractInstruction {
+public class IncInstruction extends AbstractInstruction implements OneArgInstruction  {
 
-    private Register.Key key;
+    private Argument argument;
 
-    public IncInstruction(Register register, Register.Key key) {
-        super(register);
-        this.key = key;
+    public IncInstruction(Argument argument) {
+        this.argument = argument;
     }
 
     @Override
-    protected void doExecute() {
-        register.increment(key);
+    protected void doExecute(int startAddress) {
+        argument.increment();
     }
 
     @Override
     public String toString() {
-        return "inc " + key;
+        return "inc " + argument;
+    }
+
+    @Override
+    public Argument getArg() {
+        return argument;
     }
 }

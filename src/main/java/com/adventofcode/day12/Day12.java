@@ -3,19 +3,19 @@ package com.adventofcode.day12;
 import com.adventofcode.common.ResourceUtils;
 import com.adventofcode.common.TokenInfo;
 import com.adventofcode.common.Tokenizer;
+import com.adventofcode.day12.argument.Argument;
+import com.adventofcode.day12.argument.IntArgument;
+import com.adventofcode.day12.argument.RegisterKeyArgument;
 import com.adventofcode.day12.instruction.CopyInstruction;
 import com.adventofcode.day12.instruction.DecInstruction;
 import com.adventofcode.day12.instruction.IncInstruction;
 import com.adventofcode.day12.instruction.Instruction;
 import com.adventofcode.day12.instruction.JnzInstruction;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.function.IntSupplier;
 import java.util.regex.Matcher;
 
 import static java.util.Arrays.asList;
-import static java.util.stream.Collectors.toList;
 
 /**
  * --- Day 12: Leonardo's Monorail ---
@@ -69,14 +69,14 @@ import static java.util.stream.Collectors.toList;
 public class Day12 {
 
     public static void main(String[] args) {
-        List<String> input = ResourceUtils.readLines("day12.txt");
+        String input = ResourceUtils.read("day12.txt");
 
-        System.out.println(solvePart1(input));
-        System.out.println(solvePart2(input));
+        System.out.println(solve(input, 0));
+        System.out.println(solve(input, 1));
     }
 
-    static int solvePart1(List<String> input) {
-        Register register = new Register();
+    static int solve(String input, int initialC) {
+        Register register = new Register(0, 0, initialC, 0);
 
         List<Instruction> instructions = parseInstructions(input, register);
 
@@ -87,70 +87,49 @@ public class Day12 {
         return register.get(new Register.Key('a'));
     }
 
-    private static int solvePart2(List<String> input) {
-        Register register = new Register(0, 0, 1, 0);
-
-        List<Instruction> instructions = parseInstructions(input, register);
-
-        for (int i = 0; i < instructions.size(); ) {
-            i = instructions.get(i).execute(i);
-        }
-
-        return register.get(new Register.Key('a'));
-    }
-
-    private static List<Instruction> parseInstructions(List<String> input, Register register) {
+    private static List<Instruction> parseInstructions(String input, Register register) {
         Tokenizer<Instruction> tokenizer = new Tokenizer<>(asList(
                 new TokenInfo<>("inc ([a-d])", m -> parseIncInstruction(m, register)),
                 new TokenInfo<>("dec ([a-d])", m -> parseDecInstruction(m, register)),
-                new TokenInfo<>("cpy ((?<regKey>[a-d])|(?<val>\\d+)) ([a-d])", m -> parseCopyInstruction(m, register)),
-                new TokenInfo<>("jnz ((?<regKey>[a-d])|(?<val>\\d+)) (-?\\d+)", m -> parseJnzInstruction(m, register))
+                new TokenInfo<>("cpy ((?<regKey>[a-d])|(?<val>-?\\d+)) ([a-d])", m -> parseCopyInstruction(m, register)),
+                new TokenInfo<>("jnz ((?<regKey1>[a-d])|(?<val1>-?\\d+)) ((?<regKey2>[a-d])|(?<val2>-?\\d+))", m -> parseJnzInstruction(m, register))
         ));
 
-        return input.stream()
-                .map(tokenizer::parse)
-                .flatMap(Collection::stream)
-                .collect(toList());
+        return tokenizer.parse(input);
     }
 
-    private static Instruction parseIncInstruction(Matcher matcher, Register register) {
-        return new IncInstruction(register, new Register.Key(matcher.group(1)));
+    public static Instruction parseIncInstruction(Matcher matcher, Register register) {
+        return new IncInstruction(new RegisterKeyArgument(new Register.Key(matcher.group(1)), register));
     }
 
-    private static Instruction parseDecInstruction(Matcher matcher, Register register) {
-        return new DecInstruction(register, new Register.Key(matcher.group(1)));
+    public static Instruction parseDecInstruction(Matcher matcher, Register register) {
+        return new DecInstruction(new RegisterKeyArgument(new Register.Key(matcher.group(1)), register));
     }
 
-    private static Instruction parseCopyInstruction(Matcher matcher, Register register) {
-        String regKey = matcher.group("regKey");
-        String val = matcher.group("val");
+    public static Instruction parseCopyInstruction(Matcher matcher, Register register) {
+        return new CopyInstruction(parseArgument(matcher, register, "regKey", "val"),
+                new RegisterKeyArgument(new Register.Key(matcher.group(4)), register));
+    }
 
-        int intVal = val != null ? Integer.parseInt(val) : -1;
+    public static Instruction parseJnzInstruction(Matcher matcher, Register register) {
+        return new JnzInstruction(parseArgument(matcher, register, "regKey1", "val1"),
+                parseArgument(matcher, register, "regKey2", "val2"));
+    }
 
-        IntSupplier valSupplier;
-        if (regKey != null) {
-            valSupplier = () -> register.get(new Register.Key(regKey));
+    public static Argument parseArgument(Matcher matcher, Register register, String regKey, String valKey) {
+        String _regKey = matcher.group(regKey);
+        String _val = matcher.group(valKey);
+
+        int intVal = _val != null ? Integer.parseInt(_val) : -1;
+
+        Argument arg;
+        if (_regKey != null) {
+            arg = new RegisterKeyArgument(new Register.Key(_regKey), register);
         } else {
-            valSupplier = () -> intVal;
+            arg = new IntArgument(intVal);
         }
 
-        return new CopyInstruction(register, valSupplier, new Register.Key(matcher.group(4)));
-    }
-
-    private static Instruction parseJnzInstruction(Matcher matcher, Register register) {
-        String regKey = matcher.group("regKey");
-        String val = matcher.group("val");
-
-        int intVal = val != null ? Integer.parseInt(val) : -1;
-
-        IntSupplier valSupplier;
-        if (regKey != null) {
-            valSupplier = () -> register.get(new Register.Key(regKey));
-        } else {
-            valSupplier = () -> intVal;
-        }
-
-        return new JnzInstruction(register, valSupplier, Integer.parseInt(matcher.group(4)));
+        return arg;
     }
 
 }

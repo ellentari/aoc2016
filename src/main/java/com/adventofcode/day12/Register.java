@@ -4,11 +4,11 @@ public class Register {
 
     private final int[] registers;
 
-    Register(int a, int b, int c, int d) {
+    public Register(int a, int b, int c, int d) {
         registers = new int[] { a, b, c, d };
     }
 
-    Register() {
+    public Register() {
         this(0, 0, 0, 0);
     }
 
@@ -36,11 +36,11 @@ public class Register {
 
         char key;
 
-        Key(String key) {
+        public Key(String key) {
             this(key.charAt(0));
         }
 
-        Key(char key) {
+        public Key(char key) {
             if (key < 'a' || key > 'd') {
                 throw new IllegalArgumentException("Illegal register key: " + key);
             }

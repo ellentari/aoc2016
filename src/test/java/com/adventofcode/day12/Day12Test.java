@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class Day12Test {
 
     @Test
-    public void solvePart1() {
+    public void testSolve() {
         String input = "cpy 41 a\n" +
                 "inc a\n" +
                 "inc a\n" +
@@ -16,7 +16,7 @@ public class Day12Test {
                 "jnz a 2\n" +
                 "dec a";
 
-        assertEquals(42, Day12.solvePart1(asList(input.split("\\n"))));
+        assertEquals(42, Day12.solve(input, 0));
     }
 
 }
