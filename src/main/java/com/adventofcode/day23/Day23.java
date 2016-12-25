@@ -111,7 +111,7 @@ public class Day23 {
         return tokenizer.parse(input);
     }
 
-    private static Instruction parseTglInstruction(Matcher matcher, List<Instruction> instructions, Register register) {
+    public static Instruction parseTglInstruction(Matcher matcher, List<Instruction> instructions, Register register) {
         return new TglInstruction(instructions, Day12.parseArgument(matcher, register, "regKey", "val"));
     }
 }
